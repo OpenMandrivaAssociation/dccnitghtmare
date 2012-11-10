@@ -1,0 +1,72 @@
+diff -urN dccnitghtmare/src/app/Makefile.in dccnitghtmare-patched/src/app/Makefile.in
+--- dccnitghtmare/src/app/Makefile.in	2011-12-20 00:45:08.000000000 +1100
++++ dccnitghtmare-patched/src/app/Makefile.in	2011-12-21 01:17:49.036850848 +1100
+@@ -91,7 +91,7 @@
+ 
+ $(BIN)heightmap2dnt: $(OBJSGUI) $(OBJSIA) $(OBJSMAPA) $(OBJSCBOOK) $(OBJSENGINE) $(OBJSPART) $(OBJSCLASSES) $(OBJSLANG) $(OBJSETC) $(OBJSSOUND) $(OBJSFIGHT) heightmap2dnt.o
+ 	@printf "Linking heightmap2dnt... "
+-	@$(CC) $(EFLAGS) $(OBJSGUI) $(OBJSIA) $(OBJSCBOOK) $(OBJSMAPA) $(OBJSENGINE) $(OBJSPART) $(OBJSCLASSES) $(OBJSLANG) $(OBJSETC) $(OBJSSOUND) $(OBJSFIGHT) heightmap2dnt.o -o $(BIN)heightmap2dnt
++	@$(CC) $(LDFLAGS) $(EFLAGS) $(OBJSGUI) $(OBJSIA) $(OBJSCBOOK) $(OBJSMAPA) $(OBJSENGINE) $(OBJSPART) $(OBJSCLASSES) $(OBJSLANG) $(OBJSETC) $(OBJSSOUND) $(OBJSFIGHT) heightmap2dnt.o -o $(BIN)heightmap2dnt $(LIBS)
+ 	@printf "\e[0;32mDone.\e[0;0m\n"
+ 
+ parts:
+diff -urN dccnitghtmare/src/app/mapEditor/Makefile.in dccnitghtmare-patched/src/app/mapEditor/Makefile.in
+--- dccnitghtmare/src/app/mapEditor/Makefile.in	2011-12-20 00:45:09.000000000 +1100
++++ dccnitghtmare-patched/src/app/mapEditor/Makefile.in	2011-12-21 00:41:06.208849510 +1100
+@@ -185,7 +185,7 @@
+ 
+ $(BIN)dntMapEditor: $(OBJSGUI) $(OBJSIA) $(OBJSMAPA) $(OBJSENGINE) $(OBJSPART) $(OBJSCLASSES) $(OBJSLANG) $(OBJSETC) $(OBJSSOUND) $(OBJSFIGHT) $(OBJSCBOOK) $(OBJS)
+ 	@printf "Linking mapEditor... "
+-	@$(CC) $(EFLAGS) $(OBJSGUI) $(OBJSIA) $(OBJSMAPA) $(OBJSENGINE) $(OBJSPART) $(OBJSCLASSES) $(OBJSLANG) $(OBJSETC) $(OBJSSOUND) $(OBJSFIGHT) $(OBJSCBOOK) $(OBJS) -o $(BIN)dntMapEditor
++	@$(CC) $(LDFLAGS) $(EFLAGS) $(OBJSGUI) $(OBJSIA) $(OBJSMAPA) $(OBJSENGINE) $(OBJSPART) $(OBJSCLASSES) $(OBJSLANG) $(OBJSETC) $(OBJSSOUND) $(OBJSFIGHT) $(OBJSCBOOK) $(OBJS) -o $(BIN)dntMapEditor $(LIBS)
+ 	@printf "\e[0;32mDone.\e[0;0m\n"
+ 
+ clean:
+diff -urN dccnitghtmare/src/app/partEditor/Makefile.in dccnitghtmare-patched/src/app/partEditor/Makefile.in
+--- dccnitghtmare/src/app/partEditor/Makefile.in	2011-12-20 00:45:11.000000000 +1100
++++ dccnitghtmare-patched/src/app/partEditor/Makefile.in	2011-12-21 00:34:59.438849287 +1100
+@@ -118,7 +118,7 @@
+ 
+ $(BIN)dntPartEditor: $(OBJSGUI) $(OBJSMAPA) $(OBJSPART) $(OBJS)
+ 	@printf "Linking partEditor... "
+-	@$(CC) $(EFLAGS) $(OBJSGUI) $(OBJSIA) $(OBJSMAPA) $(OBJSENGINE) $(OBJSPART) $(OBJSCLASSES) $(OBJSLANG) $(OBJSETC) $(OBJSSOUND) $(OBJSFIGHT) $(OBJSCBOOK) $(OBJS) -o $(BIN)dntPartEditor
++	@$(CC) $(LDFLAGS) $(EFLAGS) $(OBJSGUI) $(OBJSIA) $(OBJSMAPA) $(OBJSENGINE) $(OBJSPART) $(OBJSCLASSES) $(OBJSLANG) $(OBJSETC) $(OBJSSOUND) $(OBJSFIGHT) $(OBJSCBOOK) $(OBJS) -o $(BIN)dntPartEditor $(LIBS)
+ 	@printf "\e[0;32mDone.\e[0;0m\n"
+ 
+ clean:
+diff -urN dccnitghtmare/src/engine/Makefile.in dccnitghtmare-patched/src/engine/Makefile.in
+--- dccnitghtmare/src/engine/Makefile.in	2011-12-20 00:45:12.000000000 +1100
++++ dccnitghtmare-patched/src/engine/Makefile.in	2011-12-21 00:21:20.160848790 +1100
+@@ -283,7 +283,7 @@
+ 
+ $(BIN)dccnitghtmare: $(OBJSGUI) $(OBJSMAPA) $(OBJSNET) $(OBJSETC) $(OBJSCLASSES) $(OBJSLANG) $(OBJSSOUND) $(OBJSPART) $(OBJSFIGHT) $(OBJSIA) $(OBJSCBOOK) $(OBJS)  
+ 	@printf "Linking dccnitghtmare... "
+-	@$(CC) $(LDFLAGS) $(LIBS) $(EFLAGS) $(OBJSGUI) $(OBJSCLASSES) $(OBJSLANG) $(OBJSNET) $(OBJSETC) $(OBJSIA) $(FIFO) $(OBJSMAPA) $(OBJSCBOOK) $(OBJSSOUND) $(OBJSPART) $(OBJSFIGHT) $(OBJS) $(SUPREDE) -o $(BIN)dccnitghtmare
++	@$(CC) $(LDFLAGS) $(EFLAGS) $(OBJSGUI) $(OBJSCLASSES) $(OBJSLANG) $(OBJSNET) $(OBJSETC) $(OBJSIA) $(FIFO) $(OBJSMAPA) $(OBJSCBOOK) $(OBJSSOUND) $(OBJSPART) $(OBJSFIGHT) $(OBJS) $(SUPREDE) -o $(BIN)dccnitghtmare $(LIBS)
+ 	@printf "\e[0;32mDone.\e[0;0m\n"
+ 
+ clean:
+diff -urN dccnitghtmare/src/net/Makefile.in dccnitghtmare-patched/src/net/Makefile.in
+--- dccnitghtmare/src/net/Makefile.in	2011-12-20 00:45:03.000000000 +1100
++++ dccnitghtmare-patched/src/net/Makefile.in	2011-12-21 00:36:27.237849340 +1100
+@@ -26,7 +26,7 @@
+ 
+ client: common.o server client.o common.h
+ 	${CPP} ${CFLAGS} -c -DCLIENT_TEST client.c
+-	${CPP} ${CFLAGS} -DCLIENT_TEST ../etc/fifo.o client.o common.o -o client
++	${CPP} ${CFLAGS} -DCLIENT_TEST $(LDFLAGS) ../etc/fifo.o client.o common.o -o client $(LIBS)
+ 
+ clean:
+ 	rm -rf server server.o common.o client.o client
+diff -urN dccnitghtmare/src/sound/Makefile.in dccnitghtmare-patched/src/sound/Makefile.in
+--- dccnitghtmare/src/sound/Makefile.in	2011-12-20 00:45:03.000000000 +1100
++++ dccnitghtmare-patched/src/sound/Makefile.in	2011-12-21 00:35:44.095849314 +1100
+@@ -25,7 +25,7 @@
+ 
+ testsound: $(objs) testsound.cpp
+ 	@printf "Making testsound... "
+-	@$(CC) $(EFLAGS) testsound.cpp $(objs) ../etc/list.o ../etc/dirs.o $(LDFLAGS) -o testsound
++	@$(CC) $(LDFLAGS) $(EFLAGS) testsound.cpp $(objs) ../etc/list.o ../etc/dirs.o $(LDFLAGS) -o testsound $(LIBS)
+ 	@printf "\e[0;32mDone.\e[0;0m\n"
+ 
+ clean: 

@@ -1,0 +1,14 @@
+diff -urN dccnitghtmare/src/engine/options.cpp dccnitghtmare-patched/src/engine/options.cpp
+--- dccnitghtmare/src/engine/options.cpp	2011-12-20 00:45:12.000000000 +1100
++++ dccnitghtmare-patched/src/engine/options.cpp	2011-12-21 01:49:57.779852018 +1100
+@@ -255,6 +255,10 @@
+       cerr << "Creating Directory: " << info.getUserHome() << ":";
+       /* Create the User directory */
+ 
++      /* load(string) overwrites fileName and we don't want it, so we use dirty hack */
++      fileName = info.getUserHome() + "options.cfg";
++
++
+       #ifdef _MSC_VER
+          if(CreateDirectory(info.getUserHome().c_str(),NULL))
+          {
