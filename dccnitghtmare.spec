@@ -1,7 +1,7 @@
 Summary:	3D single player RPG in a satirical post-apocalyptical world
 Name:		dccnitghtmare
 Version:	0.8
-Release:	%mkrel 1
+Release:	2
 License:	GPLv3
 Group:		Games/Adventure
 URL:		http://dnt.dnteam.org/cgi-bin/about.py
@@ -13,13 +13,14 @@ Patch0:		dccnitghtmare-0.8-linking.patch
 # .dccnitghtmare exist in user home yet
 Patch1:		dccnitghtmare-0.8-options.patch
 BuildRequires:	cal3d-devel
-BuildRequires:	libvorbis-devel
-BuildRequires:	openal-devel
-BuildRequires:	SDL-devel
-BuildRequires:	SDL_image-devel
+BuildRequires:	pkgconfig(vorbis)
+BuildRequires:	pkgconfig(openal)
+BuildRequires:	pkgconfig(gl)
+BuildRequires:	pkgconfig(glu)
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(SDL_image)
 BuildRequires:	SDL_ttf-devel
 Requires:	%{name}-data = %{version}
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 DccNiTghtmare is a project to make a 3d realtime RPG with battles
@@ -45,11 +46,10 @@ Data files used to play DccNiTghtmare.
 %make
 
 %install
-%__rm -rf %{buildroot}
 %makeinstall
 
-%__mkdir_p %{buildroot}%{_datadir}/applications
-%__cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -61,22 +61,23 @@ Terminal=false
 Categories=Game;AdventureGame;
 EOF
 
-%__mkdir_p  %{buildroot}%{_datadir}/pixmaps
-%__cp data/dnt-icon.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+mkdir -p  %{buildroot}%{_datadir}/pixmaps
+cp data/dnt-icon.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 %find_lang %{name}
 
-%clean
-%__rm -rf %{buildroot}
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc COPYING README
 %{_bindir}/%{name}
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 
 %files data
-%defattr(-,root,root)
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
+
+%changelog
+* Tue Dec 20 2011 Andrey Bondrov <abondrov@mandriva.org> 0.8-1mdv2011.0
++ Revision: 743945
+- imported package dccnitghtmare
+
