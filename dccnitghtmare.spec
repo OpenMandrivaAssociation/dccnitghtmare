@@ -1,7 +1,7 @@
 Summary:	3D single player RPG in a satirical post-apocalyptical world
 Name:		dccnitghtmare
 Version:	0.8
-Release:	2
+Release:	3
 License:	GPLv3
 Group:		Games/Adventure
 URL:		http://dnt.dnteam.org/cgi-bin/about.py
