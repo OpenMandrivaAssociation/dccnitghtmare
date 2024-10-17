@@ -4,7 +4,7 @@ Version:	0.8
 Release:	3
 License:	GPLv3
 Group:		Games/Adventure
-URL:		http://dnt.dnteam.org/cgi-bin/about.py
+URL:		https://dnt.dnteam.org/cgi-bin/about.py
 Source:		http://sourceforge.net/projects/dccnitghtmare/files/dccnitghtmare/dccnitghtmare%20%{version}/%{name}-%{version}.tar.bz2
 Source1:	dccnitghtmare.png
 Patch0:		dccnitghtmare-0.8-linking.patch
