@@ -12,6 +12,11 @@ Patch0:		dccnitghtmare-0.8-linking.patch
 # The game should be able to save options if there is no
 # .dccnitghtmare exist in user home yet
 Patch1:		dccnitghtmare-0.8-options.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	cal3d-devel
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(openal)
